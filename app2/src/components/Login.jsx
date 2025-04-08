@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast"; 
 import { useDispatch } from "react-redux";
 import { addUser,removeUser } from "../utils/userSlice";
@@ -16,7 +15,6 @@ import { addUser,removeUser } from "../utils/userSlice";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = useRef(null);
   const email = useRef(null);
@@ -51,12 +49,9 @@ const Login = () => {
                   uid: uid,
                   email: email,
                   displayName: displayName,
-                  // photoURL: photoURL,
                 })
               );
               toast.success("Signup successful! 🎉");
-
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -78,7 +73,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           toast.success("Signed in successfully!");
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
