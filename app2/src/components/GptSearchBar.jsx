@@ -8,7 +8,7 @@ const GptSearchBar = () => {
     const handleGptSearchClick=()=>{
       const value = searchText.current.value;
       if (value.trim() === '') return;
-      alert(`Opp's Billing limit exceedded for OpenAI API 
+      alert(`Opp's Billing limit exceedded for OpenAI API key 
         here is search text: ${value}`);
     }
   return (
